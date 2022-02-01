@@ -12,30 +12,6 @@ export class App extends Component {
     bad: 0,
   }
 
-  handelChangerGood = () => {
-    this.setState((state) => {
-      return {
-        good: state.good + 1,
-      }
-    })
-  }
-
-  handelChangerNeutral = () => {
-    this.setState((state) => {
-      return {
-        neutral: state.neutral + 1,
-      }
-    })
-  }
-
-  handelChangerBad = () => {
-    this.setState((state) => {
-      return {
-        bad: state.bad + 1,
-      }
-    })
-  }
-
   countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad
   }
@@ -45,13 +21,11 @@ export class App extends Component {
   }
 
   handelChanger = (name) => {
-    if (name === 'good') {
-      this.handelChangerGood()
-    } else if (name === 'neutral') {
-      this.handelChangerNeutral()
-    } else if (name === 'bad') {
-      this.handelChangerBad()
-    }
+    this.setState((state) => {
+      return {
+        [name]: state[name] + 1,
+      }
+    })
   }
 
   render() {
